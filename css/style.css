@@ -1,103 +1,74 @@
-* {
-    margin: 0;
+*{
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
-  
-body {
-    background-color: #0a2463;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-  
-img {
-    max-width: 100%;
-}
-  
-.hide {
-    display: none;
-}
-.main-wrapper{
-    height: 100vh;
-}
 
-h1{
-    text-align: center;
-    color: white;
-    font-size: 4rem;
-    padding-top: 30px;
-    margin-bottom: 30px;
-}
-  
-.container {
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    margin: 0 auto;
+    height: 100vh;
 }
-  
-.carousel {
-    display: flex;
-    width: 80%;
-    height: 600px;
-    box-shadow: #fffaffc6;
-}
-  
-.img-lg {
-    width: 80%;
-}
-  
-.img-lg img {
-    width: 100%;
-    height: 100%;
-}
-  
-.img-xs {
-    background-color: #d8315b;
-    width: 20%;
+
+.slider{
     position: relative;
+    max-width: 800px;
 }
-  
-.xl.active {
+
+.item{
+    display: none;
+}
+
+.item.active{
     display: block;
 }
-  
-  
-.img-xs img {
-    height: calc(100% / 5);
+
+.item img{
     width: 100%;
+}
+.images{
+    width: 100%;
+}
+
+.thumbnails{
+    position: relative;
+    width: 100%;
+}
+.img-slider-bottom {
+    display: flex;
+    filter: brightness(.4);
+}
+  
+.img-slider-bottom img {
+    width: calc(100% / 5);
+    height: 120px;
     display: block;
-    filter: brightness(.2);
+    object-fit: cover;
 }
-  
-.xs.active {
-    filter: brightness(1);
-    border: 4px solid rgba(216, 48, 91, .7);
-    transition: all .3s;
-}
-  
-.btn {
-    border: none;
-    background-color: #3e92cc;
-    cursor: pointer;
+
+.prev, .next{
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 40px;
     height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgba(255, 255, 255, .5);
     border-radius: 50%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.8rem;
-    z-index: 2;
+    margin: 10px;
+    cursor: pointer;
 }
-  
-.btn:hover {
+
+.prev:hover, .next:hover{
     background-color: white;
 }
-  
-.btn.up {
-    top: 20px;
+
+.prev{
+    left: 0;
 }
-  
-.btn.down {
-    bottom: 20px;
+
+.next{
+    right: 0;
 }

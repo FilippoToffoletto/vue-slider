@@ -4,17 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- VUE -->
+    <script src='https://unpkg.com/vue@3'></script>
+
     <!-- font awesome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous'/>
 
     <link rel="stylesheet" href="css/style.css">
-    <title>Carousel</title>
+    <title>Carousel Vue</title>
 </head>
 <body>
   <div class="main-wrapper">
     <h1>Carousel</h1>
     <div class="container">
-        <div class="carousel">
+        <div id="app">
+            <div class="container">
+               
+                <div class="slider">
+        
+                    <div class="item active images">
+                        <img :src="photos[counterPhoto]" alt="">
+                    </div>
+                    <div class="thumbnails">
+                        <div class="img-slider-bottom" v-for="photos[counterPhoto]">
+                            <img :src="photos[counterPhoto]" alt="" @click="">
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div @click="prevPhoto()" class="prev"><i class="fa-solid fa-chevron-left"></i></div>
+                        <div @click="nextPhoto()" class="next"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
+    
+                    
+                </div>
+    
+            </div>
+        </div>
+    
+
+        <!-- <div class="slider">
        
           <div class="img-lg">
     
@@ -31,7 +60,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
     </div>
   </div>
 
