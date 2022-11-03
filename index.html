@@ -5,68 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- BOOTSTRAP -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
+
     <!-- VUE -->
-    <script src='https://unpkg.com/vue@3'></script>
-
-    <!-- font awesome -->
+    <script src="https://unpkg.com/vue@3"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous'/>
-
     <link rel="stylesheet" href="css/style.css">
-    <title>Carousel Vue</title>
+
+    <title>Carousel</title>
 </head>
 <body>
-  <div class="main-wrapper">
-    <h1>Carousel</h1>
-    <div class="container">
-        <div id="app">
-            <div class="container">
-               
-                <div class="slider">
-        
-                    <div class="item active images">
-                        <img :src="photos[counterPhoto]" alt="">
-                    </div>
-                    <div class="thumbnails">
-                        <div class="img-slider-bottom" v-for="photos[counterPhoto]">
-                            <img :src="photos[counterPhoto]" alt="" @click="">
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <div @click="prevPhoto()" class="prev"><i class="fa-solid fa-chevron-left"></i></div>
-                        <div @click="nextPhoto()" class="next"><i class="fa-solid fa-chevron-right"></i></div>
-                    </div>
+    <div class="container" id="app">
+       <div class="slider" @mouseenter="stopAutoScroll()" @mouseleave="isStop = false">
+         <div class="container-slider-top">
     
-                    
-                </div>
-    
+          <div class="img-slider-top">
+            <img :src="'img/' + postiDaVisitare[counterImg].urlImg" :alt="postiDaVisitare[counterImg].nome"> 
+          
+            <div class="description">
+              <h2> {{postiDaVisitare[counterImg].nome}}  </h2>
+              <p>  {{postiDaVisitare[counterImg].descrizione}} </p>
             </div>
+          </div> 
+    
+         </div>
+         <div class="container-slider-bottom">
+    
+          <div v-for="(citta, index) in postiDaVisitare" class="img-slider-bottom" :class="{'active': index == counterImg }" @click='counterImg = index'>
+            <img  :src="'img/' + citta.urlImg"
+            alt="citta.nome">
+          </div>
+    
         </div>
+        <div class="button">
+          <button class="btn right" @click="nextPrev(true)">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+          <button class="btn left" @click="nextPrev(false)">
+            <i class="fa-solid fa-circle-chevron-left"></i>
+          </button>
+        </div>
+       </div>
     
-
-        <!-- <div class="slider">
        
-          <div class="img-lg">
+       <button class="btn-start-stop" @click="stopAutoScroll(), checkIsStopped()" v-if="isStop">
+          STOP
+       </button>
+       <button class="btn-start-stop" @click="autoScroll(), checkIsStopped()" v-if="!isStop">
+          START
+       </button>
     
-          </div>
-    
-          <div class="img-xs">
-           
-            <div class="button-group">
-              <button class="btn up">
-                <i class="fa-solid fa-chevron-up"></i>
-              </button>
-              <button class="btn down">
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-            </div>
-          </div>
-        </div> -->
     </div>
-  </div>
-
-    
-
     <!-- <script src="js/script.js"></script> -->
     <script src="js/vue.js"></script>
-</body>
+
+  </body>
+  </html>
 </html>
